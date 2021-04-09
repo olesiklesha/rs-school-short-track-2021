@@ -11,23 +11,15 @@
  *
  */
 function getSumOfDigits(n) {
-  function numb(num) {
-    const arr = String(num).split('').length;
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-      sum += arr[i];
-    }
-    return sum;
+  const arr = String(n).split('');
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += +arr[i];
   }
 
-  const result = numb(n);
-  let finRes = 0;
-
-  if (result > 10) {
-    finRes = numb(result);
-  }
-
-  return finRes;
+  if (sum < 10) return sum;
+  return getSumOfDigits(sum);
 }
 
 module.exports = getSumOfDigits;
