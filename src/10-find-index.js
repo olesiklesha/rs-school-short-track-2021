@@ -12,14 +12,25 @@
  *
  */
 function findIndex(array, value) {
-  let r = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (value === array[i]) {
-      r = i;
-      break;
-    }
+  let start = 0;
+  let middle = 0;
+  let end = array.length - 1;
+  let current = 0;
+
+  while (start <= end) {
+    middle = Math.floor(start + (end - start) / 2);
+    current = array[middle];
+
+    if (current === value) return middle;
+
+    if (current < value) {
+      start = middle + 1;
+    } else if (current > value) {
+      end = middle - 1;
+    } else return -1;
   }
-  return r;
+
+  return -1;
 }
 
 module.exports = findIndex;
